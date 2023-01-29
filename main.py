@@ -4,6 +4,7 @@ import pandas as pd
 from helper import create_holdings_df, process_scraped_data
 import traceback
 import numpy as np
+import datetime
 
 def main():
 	df_all = pd.DataFrame()
@@ -70,7 +71,8 @@ def main():
 	    header = file.read().replace('\n', '')
 	with open('body.html', 'r') as file:
 	    body_string = file.read().replace('\n', '')
-
+	print('now: ', str(datetime.datetime.now()))
+	header = header.format(most_recent_filing_date=(str(datetime.datetime.now())))
 	body = body_string %(table_html_heavy, table_html_hot, table_html_cold)
 
 	final = header +body+ footer 
