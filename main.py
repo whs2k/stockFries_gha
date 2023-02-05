@@ -42,6 +42,7 @@ def main():
 
 	table_html_heavy = df_heavy_formatted \
 	    .sort_values('value', ascending=False).head(35) \
+	    .rename(columns={'nameOfIssuer_link':'Stock Link'}) \
 	    .to_html(classes="table table-hover table-condensed",
 	        #formatters=frmt,
 	        index=False,render_links=True, justify="center", escape=False, 
@@ -50,6 +51,7 @@ def main():
 
 	table_html_hot = df_hot_formatted \
 	    .sort_values('value', ascending=False).head(35) \
+	    .rename(columns={'nameOfIssuer_link':'Stock Link'}) \
 	    .to_html(classes="table table-hover table-condensed",
 	        #formatters=frmt,
 	        index=False,render_links=True, justify="center", escape=False, 
@@ -58,6 +60,7 @@ def main():
 
 	table_html_cold = df_cold_formatted \
 	    .sort_values('value', ascending=True).head(35) \
+	    .rename(columns={'nameOfIssuer_link':'Stock Link'}) \
 	    .to_html(classes="table table-hover table-condensed",
 	        #formatters=frmt,
 	        index=False,render_links=True, justify="center", escape=False, 
@@ -77,7 +80,7 @@ def main():
 	print('now: ', str(datetime.datetime.now()))
 	header = header#.format(most_recent_filing_date='2022-09-30')#str(df_all.reportDate.max()))
 	footer = footer.format(most_recent_scrape_date=(str(datetime.datetime.now())))
-	about_body = about_body_string.format(funds_list=fund_dict)
+	about_body = about_body_string.format(funds_list=fund_dict).replace("',","',\n")
 	body = body_string %(table_html_heavy, table_html_hot, table_html_cold)
 
 	final = header +body+ footer 
