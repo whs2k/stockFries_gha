@@ -86,8 +86,8 @@ def create_holdings_df(cik_='1535392',fund_name_='Mangrove Partners'):
 
 def process_scraped_data(df_all_):
     df_all_['nameOfIssuer_link'] =df_all_['nameOfIssuer'].apply(
-    lambda x: str('''<a href="http://www.google.com/search?q=stock price {}">{}</a>''' \
-        .format(x, x)))
+    lambda x: str('''<a href="http://www.google.com/search?q=stock price {}" 
+        target="_blank">{}</a>'''.format(x, x)))
     periods = list(set(df_all_.reportDate.values))
     #print(periods[0])
     df_all_.reset_index().tail()
