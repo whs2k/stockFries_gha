@@ -21,7 +21,7 @@ def main():
 
 	df_heavy, df_hot, df_cold = process_scraped_data(df_all)
 
-	df_heavy_formatted = df_heavy.reset_index()[['nameOfIssuer','value']]
+	df_heavy_formatted = df_heavy.reset_index()[['nameOfIssuer_link','value']]
 	df_heavy_formatted['value'] = df_heavy_formatted['value'].apply(
 	    lambda x: x * 1000)
 
@@ -30,12 +30,12 @@ def main():
 	frmt_map = {np.dtype('int64'):int_frmt, np.dtype('float64'):float_frmt}
 	frmt = {col:frmt_map[df_heavy_formatted.dtypes[col]] for col in df_heavy_formatted.columns if df_heavy_formatted.dtypes[col] in frmt_map.keys()}
 
-	df_hot_formatted = df_hot.reset_index()[['nameOfIssuer','value']]
+	df_hot_formatted = df_hot.reset_index()[['nameOfIssuer_link','value']]
 	df_hot_formatted['value'] = df_hot_formatted['value'].apply(
 	    lambda x: x * 1000)
 	frmt_hot = {col:frmt_map[df_hot_formatted.dtypes[col]] for col in df_hot_formatted.columns if df_hot_formatted.dtypes[col] in frmt_map.keys()}
 
-	df_cold_formatted = df_cold.reset_index()[['nameOfIssuer','value']]
+	df_cold_formatted = df_cold.reset_index()[['nameOfIssuer_link','value']]
 	df_cold_formatted['value'] = df_cold_formatted['value'].apply(
 	    lambda x: x * 1000)
 	frmt_cold = {col:frmt_map[df_cold_formatted.dtypes[col]] for col in df_cold_formatted.columns if df_cold_formatted.dtypes[col] in frmt_map.keys()}
@@ -72,7 +72,8 @@ def main():
 	with open('body.html', 'r') as file:
 	    body_string = file.read().replace('\n', '')
 	print('now: ', str(datetime.datetime.now()))
-	header = header.format(most_recent_filing_date=(str(datetime.datetime.now())))
+	header = header.format(most_recent_filing_date=df_all.reportDate.max())
+	footer = footer.format(most_recent_scrape_date=(str(datetime.datetime.now())))
 	body = body_string %(table_html_heavy, table_html_hot, table_html_cold)
 
 	final = header +body+ footer 
