@@ -71,15 +71,23 @@ def main():
 	    header = file.read().replace('\n', '')
 	with open('body.html', 'r') as file:
 	    body_string = file.read().replace('\n', '')
+	with open('about_body.html', 'r') as file:
+	    about_body_string = file.read().replace('\n', '')
+	
 	print('now: ', str(datetime.datetime.now()))
 	header = header.format(most_recent_filing_date=df_all.reportDate.max())
 	footer = footer.format(most_recent_scrape_date=(str(datetime.datetime.now())))
+	about_body = about_body_string.format(funds_list=fund_dict)
 	body = body_string %(table_html_heavy, table_html_hot, table_html_cold)
 
 	final = header +body+ footer 
+	final_about = header+about_body+footer
 
 	with open('index.html', 'w') as file:
 	    file.write(final)
+	with open('about.html', 'w') as file:
+	    file.write(final_about)
+	
 if __name__ == "__main__":
 	main()
 
