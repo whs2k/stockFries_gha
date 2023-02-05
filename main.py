@@ -75,7 +75,7 @@ def main():
 	    about_body_string = file.read().replace('\n', '')
 	
 	print('now: ', str(datetime.datetime.now()))
-	header = header.format(most_recent_filing_date=df_all.reportDate.max())
+	header = header#.format(most_recent_filing_date='2022-09-30')#str(df_all.reportDate.max()))
 	footer = footer.format(most_recent_scrape_date=(str(datetime.datetime.now())))
 	about_body = about_body_string.format(funds_list=fund_dict)
 	body = body_string %(table_html_heavy, table_html_hot, table_html_cold)
