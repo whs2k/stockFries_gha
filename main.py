@@ -41,7 +41,7 @@ def main():
 	frmt_cold = {col:frmt_map[df_cold_formatted.dtypes[col]] for col in df_cold_formatted.columns if df_cold_formatted.dtypes[col] in frmt_map.keys()}
 
 	table_html_heavy = df_heavy_formatted \
-	    .sort_values('value', ascending=False) \
+	    .sort_values('value', ascending=False).head(35) \
 	    .to_html(classes="table table-hover table-condensed",
 	        #formatters=frmt,
 	        index=False,render_links=True, justify="center", escape=False, 
@@ -49,7 +49,7 @@ def main():
 	    #.replace('<td>','<td style = "background-color: hsl(25, 75%, 75%)">')
 
 	table_html_hot = df_hot_formatted \
-	    .sort_values('value', ascending=False) \
+	    .sort_values('value', ascending=False).head(35) \
 	    .to_html(classes="table table-hover table-condensed",
 	        #formatters=frmt,
 	        index=False,render_links=True, justify="center", escape=False, 
@@ -57,7 +57,7 @@ def main():
 	    #.replace('<td>','<td style = "background-color: hsl(25, 75%, 75%)">')
 
 	table_html_cold = df_cold_formatted \
-	    .sort_values('value', ascending=True) \
+	    .sort_values('value', ascending=True).head(35) \
 	    .to_html(classes="table table-hover table-condensed",
 	        #formatters=frmt,
 	        index=False,render_links=True, justify="center", escape=False, 
