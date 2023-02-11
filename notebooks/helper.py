@@ -86,13 +86,14 @@ def create_holdings_df(cik_='1535392',fund_name_='Mangrove Partners'):
 
 def process_scraped_data(df_all_):
     df_all_['nameOfIssuer_link'] =df_all_['nameOfIssuer'].apply(
-    lambda x: str('''<a href="http://www.google.com/search?q=stock price {}">{}</a>''' \
-        .format(x, x)))
+    lambda x: str('''<a href="http://www.google.com/search?q=stock price {}" 
+        target="_blank">{}</a>'''.format(x, x)))
     periods = list(set(df_all_.reportDate.values))
-    #print(periods[0])
+    print('periods: ',periods)
     df_all_.reset_index().tail()
     df_all_[df_all_.reportDate == periods[0]].reset_index().tail()
     df_current = df_all_[df_all_.reportDate == max(periods)].reset_index(drop=True)
+    print('df_current.tail(): ',df_current.tail())
     df_previous = df_all_[df_all_.reportDate == min(periods)].reset_index(drop=True)
     df_current_g = df_current.groupby(['nameOfIssuer','nameOfIssuer_link','cusip']).sum().sort_values('value', ascending=False)
     df_previous_g = df_previous.groupby(['nameOfIssuer','nameOfIssuer_link','cusip']).sum().sort_values('value', ascending=False)

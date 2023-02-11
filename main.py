@@ -12,7 +12,7 @@ def main():
 	    try:
 	        fund_name = fund
 	        cik = fund_dict[fund].split('CIK=')[1].split('&')[0]
-	        df_fund = create_holdings_df()
+	        df_fund = create_holdings_df(cik_=cik,fund_name_=fund_name)
 	        df_all = pd.concat([df_all, df_fund]).reset_index(drop=True)
 	        print(fund_name, cik)
 	    except:

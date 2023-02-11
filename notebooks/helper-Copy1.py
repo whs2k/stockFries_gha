@@ -1,7 +1,6 @@
 import requests
 import pandas as pd
 import xmltodict
-from datetime import datetime, timedelta
 
 def create_holdings_df(cik_='1535392',fund_name_='Mangrove Partners'):
     #Pull Filing accessionNumbers
@@ -90,16 +89,11 @@ def process_scraped_data(df_all_):
     lambda x: str('''<a href="http://www.google.com/search?q=stock price {}" 
         target="_blank">{}</a>'''.format(x, x)))
     periods = list(set(df_all_.reportDate.values))
-    ninty_days_ago = (datetime.today() - timedelta(days=90)).strftime('%Y-%m-%d')
-    for period in periods:
-        if period > ninty_days_ago:
-            periods.remove(period)
-    periods.sort(reverse=True)
-    #print('periods: ', periods)
+    #print(periods[0])
     df_all_.reset_index().tail()
     df_all_[df_all_.reportDate == periods[0]].reset_index().tail()
-    df_current = df_all_[df_all_.reportDate == periods[0]].reset_index(drop=True)
-    df_previous = df_all_[df_all_.reportDate == periods[1]].reset_index(drop=True)
+    df_current = df_all_[df_all_.reportDate == max(periods)].reset_index(drop=True)
+    df_previous = df_all_[df_all_.reportDate == min(periods)].reset_index(drop=True)
     df_current_g = df_current.groupby(['nameOfIssuer','nameOfIssuer_link','cusip']).sum().sort_values('value', ascending=False)
     df_previous_g = df_previous.groupby(['nameOfIssuer','nameOfIssuer_link','cusip']).sum().sort_values('value', ascending=False)
     df_diff = df_current_g - df_previous_g
