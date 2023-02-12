@@ -42,11 +42,6 @@ def main():
 	    lambda x: x * 1000)
 	frmt_cold = {col:frmt_map[df_cold_formatted.dtypes[col]] for col in df_cold_formatted.columns if df_cold_formatted.dtypes[col] in frmt_map.keys()}
 
-	df_puts_formatted = df_puts.reset_index()[['nameOfIssuer_link','value','fund_name']]
-	df_puts_formatted['value'] = df_puts_formatted['value'].apply(
-    lambda x: x * 1000)
-
-
 	table_html_heavy = df_heavy_formatted \
 	    .sort_values('value', ascending=False).head(35) \
 	    .rename(columns={'nameOfIssuer_link':'Stock Link'}) \
@@ -74,17 +69,6 @@ def main():
 	        max_rows=50, border=4) \
 	    #.replace('<td>','<td style = "background-color: hsl(25, 75%, 75%)">')
 
-	
-	table_html_puts = df_puts_formatted \
-	    .sort_values('value', ascending=False).head(35) \
-	    .rename(columns={'nameOfIssuer_link':'Stock Link','fund_name':'Hedge Funds'}) \
-	    .to_html(classes="table table-hover table-condensed",
-	        #formatters=frmt,
-	        index=False,render_links=True, justify="center", escape=False, 
-	        max_rows=50, border=4) \
-	    #.replace('<td>','<td style = "background-color: hsl(25, 75%, 75%)">')
-
-
 
 	with open('footer.html', 'r') as file:
 	    footer = file.read().replace('\n', '')
@@ -94,28 +78,20 @@ def main():
 	    body_string = file.read().replace('\n', '')
 	with open('about_body.html', 'r') as file:
 	    about_body_string = file.read().replace('\n', '')
-	with open('body_shorts.html', 'r') as file:
-		puts_body_string = file.read().replace('\n', '')
 	
 	print('now: ', str(datetime.datetime.now()))
 	header = header#.format(most_recent_filing_date='2022-09-30')#str(df_all.reportDate.max()))
 	footer = footer.format(most_recent_scrape_date=(str(datetime.datetime.now())))
 	about_body = about_body_string.format(funds_list=fund_dict).replace("',","',\n")
 	body = body_string %(table_html_heavy, table_html_hot, table_html_cold)
-	puts_body = puts_body_string %(table_html_puts)
-
-	
 
 	final = header +body+ footer 
 	final_about = header+about_body+footer
-	final_puts_string = header+puts_body+footer
 
 	with open('index.html', 'w') as file:
 	    file.write(final)
 	with open('about.html', 'w') as file:
 	    file.write(final_about)
-	with open('puts.html', 'w') as file:
-		file.write(final_puts_string)
 	
 if __name__ == "__main__":
 	main()
