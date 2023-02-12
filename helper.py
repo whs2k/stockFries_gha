@@ -98,8 +98,14 @@ def process_scraped_data(df_all_):
     #print('periods: ', periods)
     df_all_.reset_index().tail()
     df_all_[df_all_.reportDate == periods[0]].reset_index().tail()
-    df_current = df_all_[df_all_.reportDate == periods[0]].reset_index(drop=True)
-    df_previous = df_all_[df_all_.reportDate == periods[1]].reset_index(drop=True)
+    df_current = df_all_[((df_all_.putCall.isnull()) & (df_all_.reportDate == periods[0]))] \
+        .reset_index(drop=True)
+    df_puts_current = df_all_[((df_all_.putCall=='Put') & (df_all_.reportDate == periods[0]))] \
+        .reset_index(drop=True)
+    df_previous = df_all_[((df_all_.putCall.isnull()) & (df_all_.reportDate == periods[1]))] \
+        .reset_index(drop=True)
+    df_puts_current_g = df_puts_current.groupby(['nameOfIssuer','nameOfIssuer_link','cusip']) \
+        .agg({'value':'sum','fund_name':lambda x: list(x)}).sort_values('value', ascending=False)
     df_current_g = df_current.groupby(['nameOfIssuer','nameOfIssuer_link','cusip']).sum().sort_values('value', ascending=False)
     df_previous_g = df_previous.groupby(['nameOfIssuer','nameOfIssuer_link','cusip']).sum().sort_values('value', ascending=False)
     df_diff = df_current_g - df_previous_g
@@ -107,5 +113,5 @@ def process_scraped_data(df_all_):
     df_hot_ = df_diff[df_diff.value > 0]
     df_cold_ = df_diff[df_diff.value < 0]
     
-    return df_heavy_, df_hot_, df_cold_
+    return df_heavy_, df_hot_, df_cold_, df_puts_current_g
     

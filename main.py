@@ -21,7 +21,7 @@ def main():
 
 	df_all.to_csv('data_by_stocks.csv',index=False)
 
-	df_heavy, df_hot, df_cold = process_scraped_data(df_all)
+	df_heavy, df_hot, df_cold, df_puts = process_scraped_data(df_all)
 
 	df_heavy_formatted = df_heavy.reset_index()[['nameOfIssuer_link','value']]
 	df_heavy_formatted['value'] = df_heavy_formatted['value'].apply(
