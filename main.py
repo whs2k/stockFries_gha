@@ -9,17 +9,21 @@ import datetime
 def main():
 	df_all = pd.DataFrame()
 	for fund in fund_dict:
-	    try:
-	        fund_name = fund
-	        cik = fund_dict[fund].split('CIK=')[1].split('&')[0]
-	        df_fund = create_holdings_df(cik_=cik,fund_name_=fund_name)
-	        df_all = pd.concat([df_all, df_fund]).reset_index(drop=True)
-	        print(fund_name, cik)
-	    except:
-	        print(traceback.format_exc())
-	        continue
+		try:
+			fund_name = fund
+			cik = fund_dict[fund].split('CIK=')[1].split('&')[0]
+			df_fund = create_holdings_df(cik_=cik,fund_name_=fund_name)
+			df_all = pd.concat([df_all, df_fund]).reset_index(drop=True)
+			print('Fund: {} CIK: {} added to df  '.format(fund_name, cik))
+			#print(df_all.tail())
+		except:
+			print('Issue with: ', fund)
+			print(traceback.format_exc())
+			continue
 
 	df_all.to_csv('data_by_stocks.csv',index=False)
+	most_recent_filing_date = str(df_all.filingDate.max())
+	print('most recent filing date: ', most_recent_filing_date)
 
 	df_heavy, df_hot, df_cold, df_puts = process_scraped_data(df_all)
 
@@ -98,7 +102,7 @@ def main():
 		puts_body_string = file.read().replace('\n', '')
 	
 	print('now: ', str(datetime.datetime.now()))
-	header = header#.format(most_recent_filing_date='2022-09-30')#str(df_all.reportDate.max()))
+	header = header.format(most_recent_filing_date,'')#str(df_all.reportDate.max()))
 	footer = footer.format(most_recent_scrape_date=(str(datetime.datetime.now())))
 	about_body = about_body_string.format(funds_list=fund_dict).replace("',","',\n")
 	body = body_string %(table_html_heavy, table_html_hot, table_html_cold)
