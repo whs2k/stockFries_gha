@@ -41,7 +41,7 @@ def main():
 	df_hot_formatted['value'] = df_hot_formatted['value'].apply(lambda x: "{:,.1f}".format((float(x)/1_000_000)))#.replace(r'^\s*$', '0', regex=True)#.apply(lambda x: x * 1000)
 	frmt_hot = {col:frmt_map[df_hot_formatted.dtypes[col]] for col in df_hot_formatted.columns if df_hot_formatted.dtypes[col] in frmt_map.keys()}
 
-	df_cold_formatted = df_cold.reset_index()[['nameOfIssuer_link','value']].sort_values('value', ascending=False).head(max_num_of_rows)
+	df_cold_formatted = df_cold.reset_index()[['nameOfIssuer_link','value']].sort_values('value', ascending=True).head(max_num_of_rows)
 	df_cold_formatted['value'] = df_cold_formatted['value'].apply(lambda x: "{:,.1f}".format((float(x)/1_000_000)))#.replace(r'^\s*$', '0', regex=True)#.apply(lambda x: x * 1000)
 	frmt_cold = {col:frmt_map[df_cold_formatted.dtypes[col]] for col in df_cold_formatted.columns if df_cold_formatted.dtypes[col] in frmt_map.keys()}
 
