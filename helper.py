@@ -86,11 +86,12 @@ def create_holdings_df(cik_='1535392',fund_name_='Mangrove Partners'):
     return df_final
 
 def process_scraped_data(df_all_):
+    lookback_period = 90
     df_all_['nameOfIssuer_link'] =df_all_['nameOfIssuer'].apply(
     lambda x: str('''<a href="http://www.google.com/search?q=stock price {}" 
         target="_blank">{}</a>'''.format(x, x)))
     periods = list(set(df_all_.reportDate.values))
-    ninty_days_ago = (datetime.today() - timedelta(days=90)).strftime('%Y-%m-%d')
+    ninty_days_ago = (datetime.today() - timedelta(days=lookback_period)).strftime('%Y-%m-%d')
     for period in periods:
         if period > ninty_days_ago:
             periods.remove(period)
