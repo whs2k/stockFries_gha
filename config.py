@@ -39,6 +39,7 @@ fund_dict = {'ABRAMS CAPITAL MANAGEMENT, L.P.': 'https://www.sec.gov/cgi-bin/bro
              'BAKER BROS. ADVISORS LP': 'https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1263508&owner=exclude&count=40&hidefilings=0',
              'BOGLE INVESTMENT MANAGEMENT L P':'https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001131667&owner=include&count=40&hidefilings=0',
              'BLOOMBERGSEN U.S. FUND LP': 'https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1641744&owner=exclude&count=40&hidefilings=0',
+             'BRIDGEWATER ASSOCIATES,': 'https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1350694&owner=exclude&count=40&hidefilings=0',
              'CAPITAL FUND MANAGEMENT': 'https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1323645&owner=exclude&count=40&hidefilings=0',
              'CANYON CAPITAL ADVISORS LLC':'https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001074034&owner=include&count=40&hidefilings=0',
              'COATUE MANAGEMENT LLC': 'https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1135730&owner=exclude&count=40&hidefilings=0',
