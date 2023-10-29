@@ -1,0 +1,186 @@
+<!doctype html><html><head><!-- OLD Global site tag (gtag.js) - Google Analytics <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111396778-1"></script><script>  window.dataLayer = window.dataLayer || [];  function gtag(){{dataLayer.push(arguments);}}  gtag('js', new Date());  gtag('config', 'UA-111396778-1');</script> --><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-98SFCDNJV5"></script><script>  window.dataLayer = window.dataLayer || [];  function gtag(){dataLayer.push(arguments);}  gtag('js', new Date());  gtag('config', 'G-98SFCDNJV5');</script><!-- Google Adsense --><script data-ad-client="ca-pub-9356604541838729" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><link rel="icon" href="logo.ico">'<title>Stockfries; Scraping and Aggregating Hedge Fund 13F Filings</title><!-- Setting Viewport per SearchConsole Mobile Issue: https://web.dev/responsive-web-design-basics/?sjid=16338373947248596516-NA#viewport --><meta name="viewport" content="width=device-width, initial-scale=1"><!-- Font Awesome --><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"><!-- Google Fonts --><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"><!-- Bootstrap core CSS --><link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet"><!-- Material Design Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script><!-- Material Design Icons --><link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"><!-- Font Awesome Icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=AM_CHTML"></script><!--    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">--><link rel="stylesheet" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer/sticky-footer.css"><meta name="description" content="Stockfries scrapes and aggregates quarterly 13F SEC Hedge Fund filings. From Dorsal Capital Management, Soros Fund, Carl Icahn Holdings, Pershing Suqared and everything in between; come explore the positions of the worlds biggest investors."></head><body>  <div id="header">    <!-- Static navbar -->    <nav class="navbar fixed-top navbar-default" style="background: rgb(248,248,255)">      <div class="container-fluid">        <a class="navbar-brand" href='/'>          <img src="logo.ico" width="40" height="40" alt="">          StockFries        </a>        <ul class="nav navbar-nav navbar-right">          <li style="text-align:right; margin: 0px 0">            <a href="/puts">Put Options</a> | <!-- <a href="/blog">Page2</a> | --><a href="/about">About</a></li>            <li><small><small>Most Recent Filing Date: <a>2023-08-14</a> </small></small></li>            <!--This variable to be filled by most_recent_filing_date from main.py-->           </ul>        </div><!--/.container-fluid -->      </nav>    </div>    <br>    <br>    <div class="row mx-auto">      <div class="col-md-8 mx-auto">        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>        <ins class="adsbygoogle"        style="display:block"        data-ad-format="fluid"        data-ad-layout-key="-hd+r+7b+u-hp"        data-ad-client="ca-pub-9356604541838729"        data-ad-slot="9829814443"></ins>        <script>         (adsbygoogle = window.adsbygoogle || []).push({});       </script>     </div>   </div><body><div class="row mx-auto"><div class="col-md-8 mx-auto"><!--<div class="card">--><!--<div class="card-body">--><br>      <h4 class="card-title text-center">What are Hedge Funds Shorting?</h4>    <p class="card-text text-center">Inspired by the great work by investors from <a href = "https://www.reddit.com/r/wallstreetbets/">r/WallStreetBets</a> here are all the most recent Puts from our list of Hedge Funds (based on their most recent filings). A put option is technically different than a short sale, yet both make money when a security goes down in price.    <br>    A put option gives the holder the right to sell an underlying asset at a predetermined price, while a short sale involves borrowing and selling a stock with the expectation that the price will decline. In a put option, the holder incurs a cost but has limited risk, as they only sell if they choose to exercise the option. In a short sale, the potential loss is unlimited as the price of the stock could rise indefinitely. The difference between the sale and repurchase price is the profit in a short sale, while in a put option the profit is made by selling the asset at the higher strike price.    <br>    NOTE that Hedge funds may use Put options in conjunction with a Call Option or buying shares of a security to limit or, hedge, their portfolio's risk. For example, if George Soros buys $1B of Amazon stock, they may also purchase $1M in put options. Then if the stock goes down beyond a certain point, they can execute the Put and limit their losses.</p>  </div><!--</div>--><!--</div>--></div><br><br><div class="row mx-auto"><div class="col-md-10 mx-auto"><div class="card" >  <div class="card-body">    <h5 class="card-title">Puts <small ><kbd>$ MMs</kbd></small></h5>    <h6 class="card-subtitle mb-2 text-muted">Most Short Squeezed Stocks Across HFs</h6>            <table border="4" class="dataframe table table-hover table-condensed">
+  <thead>
+    <tr style="text-align: center;">
+      <th>Stock Link</th>
+      <th>value</th>
+      <th>Hedge Funds</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="http://www.google.com/search?q=stock price SPDR S&P 500 ETF TR" \n        target="_blank">SPDR S&P 500 ETF TR</a></td>
+      <td>53,479.4</td>
+      <td>[CAPITAL FUND MANAGEMENT, CITADEL ADVISORS LLC, CITADEL ADVISORS LLC, GLENVIEW CAPITAL MANAGEMENT, LLC, III Capital Management , POLAR ASSET MANAGEMENT PARTNERS, TWO SIGMA INVESTMENTS, LP]</td>
+    </tr>
+    <tr>
+      <td><a href="http://www.google.com/search?q=stock price INVESCO QQQ TR" \n        target="_blank">INVESCO QQQ TR</a></td>
+      <td>22,887.8</td>
+      <td>[CITADEL ADVISORS LLC, CITADEL ADVISORS LLC, SOROS FUND MANAGEMENT LLC, TWO SIGMA INVESTMENTS, LP]</td>
+    </tr>
+    <tr>
+      <td><a href="http://www.google.com/search?q=stock price TESLA INC" \n        target="_blank">TESLA INC</a></td>
+      <td>10,502.1</td>
+      <td>[CAPITAL FUND MANAGEMENT, CITADEL ADVISORS LLC, CITADEL ADVISORS LLC, D. E. Shaw & Co., Inc]</td>
+    </tr>
+    <tr>
+      <td><a href="http://www.google.com/search?q=stock price NVIDIA CORPORATION" \n        target="_blank">NVIDIA CORPORATION</a></td>
+      <td>9,815.6</td>
+      <td>[CAPITAL FUND MANAGEMENT, CITADEL ADVISORS LLC, CITADEL ADVISORS LLC, D. E. Shaw & Co., Inc]</td>
+    </tr>
+    <tr>
+      <td><a href="http://www.google.com/search?q=stock price ISHARES TR" \n        target="_blank">ISHARES TR</a></td>
+      <td>9,144.1</td>
+      <td>[CAPITAL FUND MANAGEMENT, CITADEL ADVISORS LLC, CITADEL ADVISORS LLC, CORVEX MANAGEMENT LP, GLENVIEW CAPITAL MANAGEMENT, LLC, III Capital Management , POLAR ASSET MANAGEMENT PARTNERS, SOROS FUND MANAGEMENT LLC, TWO SIGMA INVESTMENTS, LP]</td>
+    </tr>
+    <tr>
+      <td><a href="http://www.google.com/search?q=stock price APPLE INC" \n        target="_blank">APPLE INC</a></td>
+      <td>6,976.9</td>
+      <td>[CAPITAL FUND MANAGEMENT, CITADEL ADVISORS LLC, CITADEL ADVISORS LLC, D. E. Shaw & Co., Inc, DORSAL CAPITAL MANAGEMENT]</td>
+    </tr>
+    <tr>
+      <td><a href="http://www.google.com/search?q=stock price MICROSOFT CORP" \n        target="_blank">MICROSOFT CORP</a></td>
+      <td>5,843.6</td>
+      <td>[CAPITAL FUND MANAGEMENT, CITADEL ADVISORS LLC, CITADEL ADVISORS LLC, D. E. Shaw & Co., Inc]</td>
+    </tr>
+    <tr>
+      <td><a href="http://www.google.com/search?q=stock price META PLATFORMS INC" \n        target="_blank">META PLATFORMS INC</a></td>
+      <td>4,839.3</td>
+      <td>[CAPITAL FUND MANAGEMENT, CITADEL ADVISORS LLC, CITADEL ADVISORS LLC, D. E. Shaw & Co., Inc]</td>
+    </tr>
+    <tr>
+      <td><a href="http://www.google.com/search?q=stock price AMAZON COM INC" \n        target="_blank">AMAZON COM INC</a></td>
+      <td>4,316.0</td>
+      <td>[CAPITAL FUND MANAGEMENT, CITADEL ADVISORS LLC, CITADEL ADVISORS LLC, D. E. Shaw & Co., Inc]</td>
+    </tr>
+    <tr>
+      <td><a href="http://www.google.com/search?q=stock price ISHARES TR" \n        target="_blank">ISHARES TR</a></td>
+      <td>3,212.9</td>
+      <td>[CITADEL ADVISORS LLC, CITADEL ADVISORS LLC, III Capital Management , SOROS FUND MANAGEMENT LLC]</td>
+    </tr>
+    <tr>
+      <td><a href="http://www.google.com/search?q=stock price NETFLIX INC" \n        target="_blank">NETFLIX INC</a></td>
+      <td>3,136.7</td>
+      <td>[CAPITAL FUND MANAGEMENT, CITADEL ADVISORS LLC, CITADEL ADVISORS LLC, D. E. Shaw & Co., Inc]</td>
+    </tr>
+    <tr>
+      <td><a href="http://www.google.com/search?q=stock price ALPHABET INC" \n        target="_blank">ALPHABET INC</a></td>
+      <td>2,415.4</td>
+      <td>[CAPITAL FUND MANAGEMENT, CITADEL ADVISORS LLC, CITADEL ADVISORS LLC, D. E. Shaw & Co., Inc]</td>
+    </tr>
+    <tr>
+      <td><a href="http://www.google.com/search?q=stock price ALPHABET INC" \n        target="_blank">ALPHABET INC</a></td>
+      <td>2,336.7</td>
+      <td>[CITADEL ADVISORS LLC, CITADEL ADVISORS LLC, D. E. Shaw & Co., Inc]</td>
+    </tr>
+    <tr>
+      <td><a href="http://www.google.com/search?q=stock price ADVANCED MICRO DEVICES INC" \n        target="_blank">ADVANCED MICRO DEVICES INC</a></td>
+      <td>2,018.7</td>
+      <td>[CAPITAL FUND MANAGEMENT, CITADEL ADVISORS LLC, CITADEL ADVISORS LLC, D. E. Shaw & Co., Inc, SOROS FUND MANAGEMENT LLC]</td>
+    </tr>
+    <tr>
+      <td><a href="http://www.google.com/search?q=stock price BOOKING HOLDINGS INC" \n        target="_blank">BOOKING HOLDINGS INC</a></td>
+      <td>1,866.2</td>
+      <td>[CITADEL ADVISORS LLC, D. E. Shaw & Co., Inc]</td>
+    </tr>
+    <tr>
+      <td><a href="http://www.google.com/search?q=stock price PALO ALTO NETWORKS INC" \n        target="_blank">PALO ALTO NETWORKS INC</a></td>
+      <td>1,406.5</td>
+      <td>[CAPITAL FUND MANAGEMENT, CITADEL ADVISORS LLC, CITADEL ADVISORS LLC, D. E. Shaw & Co., Inc]</td>
+    </tr>
+    <tr>
+      <td><a href="http://www.google.com/search?q=stock price BROADCOM INC" \n        target="_blank">BROADCOM INC</a></td>
+      <td>1,358.6</td>
+      <td>[CAPITAL FUND MANAGEMENT, CITADEL ADVISORS LLC, CITADEL ADVISORS LLC, D. E. Shaw & Co., Inc]</td>
+    </tr>
+    <tr>
+      <td><a href="http://www.google.com/search?q=stock price ISHARES TR" \n        target="_blank">ISHARES TR</a></td>
+      <td>1,254.6</td>
+      <td>[CITADEL ADVISORS LLC, CITADEL ADVISORS LLC]</td>
+    </tr>
+    <tr>
+      <td><a href="http://www.google.com/search?q=stock price BOEING CO" \n        target="_blank">BOEING CO</a></td>
+      <td>1,233.3</td>
+      <td>[CAPITAL FUND MANAGEMENT, CITADEL ADVISORS LLC, CITADEL ADVISORS LLC, D. E. Shaw & Co., Inc]</td>
+    </tr>
+    <tr>
+      <td><a href="http://www.google.com/search?q=stock price CHIPOTLE MEXICAN GRILL INC" \n        target="_blank">CHIPOTLE MEXICAN GRILL INC</a></td>
+      <td>1,198.3</td>
+      <td>[CITADEL ADVISORS LLC, D. E. Shaw & Co., Inc]</td>
+    </tr>
+    <tr>
+      <td><a href="http://www.google.com/search?q=stock price PAYPAL HLDGS INC" \n        target="_blank">PAYPAL HLDGS INC</a></td>
+      <td>1,183.6</td>
+      <td>[CAPITAL FUND MANAGEMENT, CITADEL ADVISORS LLC, CITADEL ADVISORS LLC, D. E. Shaw & Co., Inc]</td>
+    </tr>
+    <tr>
+      <td><a href="http://www.google.com/search?q=stock price GOLDMAN SACHS GROUP INC" \n        target="_blank">GOLDMAN SACHS GROUP INC</a></td>
+      <td>1,175.5</td>
+      <td>[CAPITAL FUND MANAGEMENT, CITADEL ADVISORS LLC, CITADEL ADVISORS LLC, D. E. Shaw & Co., Inc]</td>
+    </tr>
+    <tr>
+      <td><a href="http://www.google.com/search?q=stock price ADOBE SYSTEMS INCORPORATED" \n        target="_blank">ADOBE SYSTEMS INCORPORATED</a></td>
+      <td>1,117.9</td>
+      <td>[CAPITAL FUND MANAGEMENT, CITADEL ADVISORS LLC, CITADEL ADVISORS LLC, D. E. Shaw & Co., Inc]</td>
+    </tr>
+    <tr>
+      <td><a href="http://www.google.com/search?q=stock price DISNEY WALT CO" \n        target="_blank">DISNEY WALT CO</a></td>
+      <td>1,099.9</td>
+      <td>[CAPITAL FUND MANAGEMENT, CITADEL ADVISORS LLC, CITADEL ADVISORS LLC, D. E. Shaw & Co., Inc]</td>
+    </tr>
+    <tr>
+      <td><a href="http://www.google.com/search?q=stock price BANK AMERICA CORP" \n        target="_blank">BANK AMERICA CORP</a></td>
+      <td>1,023.7</td>
+      <td>[CAPITAL FUND MANAGEMENT, CITADEL ADVISORS LLC, CITADEL ADVISORS LLC, D. E. Shaw & Co., Inc]</td>
+    </tr>
+    <tr>
+      <td><a href="http://www.google.com/search?q=stock price HOME DEPOT INC" \n        target="_blank">HOME DEPOT INC</a></td>
+      <td>1,023.0</td>
+      <td>[CAPITAL FUND MANAGEMENT, CITADEL ADVISORS LLC, CITADEL ADVISORS LLC, D. E. Shaw & Co., Inc]</td>
+    </tr>
+    <tr>
+      <td><a href="http://www.google.com/search?q=stock price SELECT SECTOR SPDR TR" \n        target="_blank">SELECT SECTOR SPDR TR</a></td>
+      <td>910.4</td>
+      <td>[CAPITAL FUND MANAGEMENT, CITADEL ADVISORS LLC, GATES CAPITAL MANAGEMENT, INC]</td>
+    </tr>
+    <tr>
+      <td><a href="http://www.google.com/search?q=stock price EXXON MOBIL CORP" \n        target="_blank">EXXON MOBIL CORP</a></td>
+      <td>909.3</td>
+      <td>[CAPITAL FUND MANAGEMENT, CITADEL ADVISORS LLC, CITADEL ADVISORS LLC, D. E. Shaw & Co., Inc]</td>
+    </tr>
+    <tr>
+      <td><a href="http://www.google.com/search?q=stock price ALIBABA GROUP HLDG LTD" \n        target="_blank">ALIBABA GROUP HLDG LTD</a></td>
+      <td>898.7</td>
+      <td>[CAPITAL FUND MANAGEMENT, CITADEL ADVISORS LLC, CITADEL ADVISORS LLC, D. E. Shaw & Co., Inc]</td>
+    </tr>
+    <tr>
+      <td><a href="http://www.google.com/search?q=stock price JPMORGAN CHASE & CO" \n        target="_blank">JPMORGAN CHASE & CO</a></td>
+      <td>896.0</td>
+      <td>[CAPITAL FUND MANAGEMENT, CITADEL ADVISORS LLC, CITADEL ADVISORS LLC, D. E. Shaw & Co., Inc]</td>
+    </tr>
+    <tr>
+      <td><a href="http://www.google.com/search?q=stock price SALESFORCE INC" \n        target="_blank">SALESFORCE INC</a></td>
+      <td>873.7</td>
+      <td>[CAPITAL FUND MANAGEMENT, CITADEL ADVISORS LLC, CITADEL ADVISORS LLC, D. E. Shaw & Co., Inc]</td>
+    </tr>
+    <tr>
+      <td><a href="http://www.google.com/search?q=stock price ISHARES TR" \n        target="_blank">ISHARES TR</a></td>
+      <td>829.2</td>
+      <td>[CITADEL ADVISORS LLC]</td>
+    </tr>
+    <tr>
+      <td><a href="http://www.google.com/search?q=stock price SELECT SECTOR SPDR TR" \n        target="_blank">SELECT SECTOR SPDR TR</a></td>
+      <td>806.4</td>
+      <td>[CAPITAL FUND MANAGEMENT, CITADEL ADVISORS LLC, CITADEL ADVISORS LLC]</td>
+    </tr>
+    <tr>
+      <td><a href="http://www.google.com/search?q=stock price PFIZER INC" \n        target="_blank">PFIZER INC</a></td>
+      <td>799.5</td>
+      <td>[CAPITAL FUND MANAGEMENT, CITADEL ADVISORS LLC, CITADEL ADVISORS LLC, D. E. Shaw & Co., Inc]</td>
+    </tr>
+    <tr>
+      <td><a href="http://www.google.com/search?q=stock price FIRST SOLAR INC" \n        target="_blank">FIRST SOLAR INC</a></td>
+      <td>791.7</td>
+      <td>[CAPITAL FUND MANAGEMENT, CITADEL ADVISORS LLC, CITADEL ADVISORS LLC, D. E. Shaw & Co., Inc]</td>
+    </tr>
+  </tbody>
+</table>  </div></div></div></div></body><br><br>    <footer class="footer" style="background: rgb(248,248,255)">      <div class="container">                    <div class="d-none d-md-block">            Most Recent Scrape Date: <a>2023-10-29 04:38:46.422583</a>             <a href="data_by_stocks.csv" download="data_by_stocks.csv" target="_blank" ><span style="float:left;" class="hidden-phone">            <button class="btn btn-sm"><i class="fa fa-download"></i> Data by Stocks</button></span></a>                      </div>      </div>      <!--      <div class="container" style="text-align:left">        Copyright © 2023 StockFries      </div>      <div class="container" style="text-align:right">              </div>      -->          </footer></html>
