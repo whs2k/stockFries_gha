@@ -86,23 +86,33 @@ def create_holdings_df(cik_='1535392',fund_name_='Mangrove Partners'):
     return df_final
 
 def process_scraped_data(df_all_):
+    lookback_period = 90
     df_all_['nameOfIssuer_link'] =df_all_['nameOfIssuer'].apply(
     lambda x: str('''<a href="http://www.google.com/search?q=stock price {}" 
         target="_blank">{}</a>'''.format(x, x)))
     periods = list(set(df_all_.reportDate.values))
-    ninty_days_ago = (datetime.today() - timedelta(days=90)).strftime('%Y-%m-%d')
+    current_filign_periods = []
+    previous_filing_periods = []
+    ninty_days_ago = (datetime.today() - timedelta(days=lookback_period)).strftime('%Y-%m-%d')
+    oneeighty_days_ago = (datetime.today() - timedelta(days=lookback_period*2)).strftime('%Y-%m-%d')
     for period in periods:
         if period > ninty_days_ago:
-            periods.remove(period)
+            #periods.remove(period)
+            current_filign_periods.append(period)
+        elif ((period > oneeighty_days_ago) & (period < ninty_days_ago)):
+            previous_filing_periods.append(period)
     periods.sort(reverse=True)
-    #print('periods: ', periods)
+    print('current_filign_periods: ', current_filign_periods)
+    print('previous_filing_periods: ', previous_filing_periods)
     df_all_.reset_index().tail()
     df_all_[df_all_.reportDate == periods[0]].reset_index().tail()
-    df_current = df_all_[((df_all_.putCall.isnull()) & (df_all_.reportDate == periods[0]))] \
+    #df_current = df_all_[((df_all_.putCall.isnull()) & (df_all_.reportDate == periods[0]))] \
+    df_current = df_all_[((df_all_.putCall.isnull()) & (df_all_.reportDate.isin(current_filign_periods)))] \
         .reset_index(drop=True)
-    df_puts_current = df_all_[((df_all_.putCall=='Put') & (df_all_.reportDate == periods[0]))] \
+    df_puts_current = df_all_[((df_all_.putCall=='Put') & (df_all_.reportDate.isin(current_filign_periods)))] \
         .reset_index(drop=True)
-    df_previous = df_all_[((df_all_.putCall.isnull()) & (df_all_.reportDate == periods[1]))] \
+    #df_previous = df_all_[((df_all_.putCall.isnull()) & (df_all_.reportDate == periods[1]))] \
+    df_previous = df_all_[((df_all_.putCall.isnull()) & (df_all_.reportDate.isin(previous_filing_periods)))] \
         .reset_index(drop=True)
     df_puts_current_g = df_puts_current.groupby(['nameOfIssuer','nameOfIssuer_link','cusip']) \
         .agg({'value':'sum','fund_name':lambda x: list(x)}).sort_values('value', ascending=False)

@@ -90,7 +90,7 @@ def process_scraped_data(df_all_):
     df_all_['nameOfIssuer_link'] =df_all_['nameOfIssuer'].apply(
     lambda x: str('''<a href="http://www.google.com/search?q=stock price {}" 
         target="_blank">{}</a>'''.format(x, x)))
-    periods = list(set(df_all_.reportDate.values))
+    periods = list(set(df_all_.filingDate.values))
     current_filign_periods = []
     previous_filing_periods = []
     ninty_days_ago = (datetime.today() - timedelta(days=lookback_period)).strftime('%Y-%m-%d')
@@ -105,14 +105,14 @@ def process_scraped_data(df_all_):
     print('current_filign_periods: ', current_filign_periods)
     print('previous_filing_periods: ', previous_filing_periods)
     df_all_.reset_index().tail()
-    df_all_[df_all_.reportDate == periods[0]].reset_index().tail()
+    #df_all_[df_all_.reportDate == periods[0]].reset_index().tail()
     #df_current = df_all_[((df_all_.putCall.isnull()) & (df_all_.reportDate == periods[0]))] \
-    df_current = df_all_[((df_all_.putCall.isnull()) & (df_all_.reportDate.isin(current_filign_periods)))] \
+    df_current = df_all_[((df_all_.putCall.isnull()) & (df_all_.filingDate.isin(current_filign_periods)))] \
         .reset_index(drop=True)
-    df_puts_current = df_all_[((df_all_.putCall=='Put') & (df_all_.reportDate.isin(current_filign_periods)))] \
+    df_puts_current = df_all_[((df_all_.putCall=='Put') & (df_all_.filingDate.isin(current_filign_periods)))] \
         .reset_index(drop=True)
     #df_previous = df_all_[((df_all_.putCall.isnull()) & (df_all_.reportDate == periods[1]))] \
-    df_previous = df_all_[((df_all_.putCall.isnull()) & (df_all_.reportDate.isin(previous_filing_periods)))] \
+    df_previous = df_all_[((df_all_.putCall.isnull()) & (df_all_.filingDate.isin(previous_filing_periods)))] \
         .reset_index(drop=True)
     df_puts_current_g = df_puts_current.groupby(['nameOfIssuer','nameOfIssuer_link','cusip']) \
         .agg({'value':'sum','fund_name':lambda x: list(x)}).sort_values('value', ascending=False)
