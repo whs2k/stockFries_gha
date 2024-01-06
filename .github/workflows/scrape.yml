@@ -34,5 +34,5 @@ jobs:
           git add -A
           git commit -m "Auto Push on $now"
           git push
-      - name: Run Tweeter
-        run: python main_tweet.py 
+      #- name: Run Tweeter
+      #  run: python main_tweet.py 
