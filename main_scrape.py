@@ -85,6 +85,9 @@ def main():
 	    #.replace('<td>','<td style = "background-color: hsl(25, 75%, 75%)">')
 	    #.sort_values('value', ascending=False).head(35) \
 
+	df_puts_export = df_puts.reset_index().sort_values('value', ascending=False) \
+		#[['nameOfIssuer_link','value','fund_name']] 
+	df_puts_export.to_csv('puts_by_stock.csv',index=False)
 
 
 	with open('footer.html', 'r') as file:
