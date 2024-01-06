@@ -22,7 +22,7 @@ jobs:
       - name: Install requirements
         run: pip install -r requirements.txt
       - name: Run Scraper
-        run: python main_scrape.py 
+        run: python main.py 
       #- name: Set env vars
       #  run: |
       #    echo "DATE=$(python -c 'import datetime as dt; print(dt.datetime.now().date())')" >> $GITHUB_ENV
@@ -34,5 +34,3 @@ jobs:
           git add -A
           git commit -m "Auto Push on $now"
           git push
-      - name: Run Tweeter
-        run: python main_tweet.py 
