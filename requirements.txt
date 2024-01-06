@@ -1,3 +1,4 @@
 pandas
 requests
 xmltodict
+requests-oauthlib
