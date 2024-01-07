@@ -59,7 +59,8 @@ def create_holdings_df(cik_='1535392',fund_name_='Mangrove Partners'):
     df_new['cik']=cik_
     df_new['filingDate']= new_filingDate
     df_new['reportDate']= new_reportDate
-    
+    df_new['filingLink']=BASE_URL_FORM_TABLE
+
     #Pull Previous Filing
     BASE_URL_FORM_TABLE = f'https://www.sec.gov/Archives/edgar/data/{cik_}/{old_accessionNumber_dash}.txt'
     print(BASE_URL_FORM_TABLE)
@@ -80,9 +81,11 @@ def create_holdings_df(cik_='1535392',fund_name_='Mangrove Partners'):
     df_old['cik']=cik_
     df_old['filingDate']= old_filingDate
     df_old['reportDate']= old_reportDate
+    df_old['filingLink']=BASE_URL_FORM_TABLE
     df_final = pd.concat([df_new, df_old])
     df_final['fund_name'] = fund_name_
     df_final['value'] = df_final['value'].astype('int')
+    df_final['fundAllFillingsSECLink']='https://www.sec.gov/edgar/browse/?CIK='+cik_
     return df_final
 
 def process_scraped_data(df_all_):
