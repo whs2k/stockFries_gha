@@ -127,4 +127,36 @@ def process_scraped_data(df_all_):
     df_cold_ = df_diff[df_diff.value < 0]
     
     return df_heavy_, df_hot_, df_cold_, df_puts_current_g
+
+def send_tweet(tweet_text, consumer_key_,consumer_secret_,access_token_,access_token_secret):
+
+    # In your terminal please set your environment variables by running the following lines of code.
+    # export 'CONSUMER_KEY'='<your_consumer_key>'
+    # export 'CONSUMER_SECRET'='<your_consumer_secret>'
+
+    consumer_key = consumer_key_#os.environ.get("CONSUMER_KEY")
+    consumer_secret = consumer_secret_#os.environ.get("CONSUMER_SECRET")
+
+    # Be sure to add replace the text of the with the text you wish to Tweet. You can also add parameters to post polls, quote Tweets, Tweet with reply settings, and Tweet to Super Followers in addition to other features.
+    payload = {"text": tweet_text}
+
+    access_token = access_token_#oauth_tokens["oauth_token"]
+    access_token_secret = access_token_secret#oauth_tokens["oauth_token_secret"]
+
+    # Making the request
+    response = oauth.post(
+        "https://api.twitter.com/2/tweets",
+        json=payload,
+    )
+
+    if response.status_code != 201:
+        raise Exception(
+            "Request returned an error: {} {}".format(response.status_code, response.text)
+        )
+
+    print("Response code: {}".format(response.status_code))
+
+    # Saving the response as JSON
+    json_response = response.json()
+    print(json.dumps(json_response, indent=4, sort_keys=True))
     
