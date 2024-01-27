@@ -2,6 +2,8 @@ import requests
 import pandas as pd
 import xmltodict
 from datetime import datetime, timedelta
+from requests_oauthlib import OAuth1Session
+import json
 
 def create_holdings_df(cik_='1535392',fund_name_='Mangrove Partners'):
     #Pull Filing accessionNumbers
@@ -128,7 +130,7 @@ def process_scraped_data(df_all_):
     
     return df_heavy_, df_hot_, df_cold_, df_puts_current_g
 
-def send_tweet(tweet_text, consumer_key_,consumer_secret_,access_token_,access_token_secret):
+def send_tweet(tweet_text, consumer_key_,consumer_secret_,access_token_,access_token_secret_):
 
     # In your terminal please set your environment variables by running the following lines of code.
     # export 'CONSUMER_KEY'='<your_consumer_key>'
@@ -141,7 +143,15 @@ def send_tweet(tweet_text, consumer_key_,consumer_secret_,access_token_,access_t
     payload = {"text": tweet_text}
 
     access_token = access_token_#oauth_tokens["oauth_token"]
-    access_token_secret = access_token_secret#oauth_tokens["oauth_token_secret"]
+    access_token_secret = access_token_secret_#oauth_tokens["oauth_token_secret"]
+
+    # Make the request
+    oauth = OAuth1Session(
+    consumer_key,
+    client_secret=consumer_secret,
+    resource_owner_key=access_token,
+    resource_owner_secret=access_token_secret)
+    
 
     # Making the request
     response = oauth.post(
