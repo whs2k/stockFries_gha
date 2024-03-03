@@ -4,6 +4,7 @@ import xmltodict
 from datetime import datetime, timedelta
 from requests_oauthlib import OAuth1Session
 import json
+from pytwitter import Api
 
 def create_holdings_df(cik_='1535392',fund_name_='Mangrove Partners'):
     #Pull Filing accessionNumbers
@@ -169,4 +170,17 @@ def send_tweet(tweet_text, consumer_key_,consumer_secret_,access_token_,access_t
     # Saving the response as JSON
     json_response = response.json()
     print(json.dumps(json_response, indent=4, sort_keys=True))
+
+def send_tweet_with_pytwitter(tweet_text, consumer_key_,consumer_secret_,access_token_,access_token_secret_):
+
+    api_authorized = Api(
+        access_token=access_token_,
+        access_secret=access_token_secret_,
+        client_id = '1341892951249616897',
+        consumer_key = consumer_key_,
+        consumer_secret = consumer_secret_,
+    oauth_flow=True
+    )
+    api_authorized.create_tweet(text=tweet_text)
+    
     

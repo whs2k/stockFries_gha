@@ -2,3 +2,4 @@ pandas
 requests
 xmltodict
 requests-oauthlib
+python-twitter-v2
