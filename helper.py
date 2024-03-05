@@ -182,5 +182,64 @@ def send_tweet_with_pytwitter(tweet_text, consumer_key_,consumer_secret_,access_
     oauth_flow=True
     )
     api_authorized.create_tweet(text=tweet_text)
-    
+
+def prep_tweet(fn_df_of_puts, fn_df_twitter_handles, fn_df_of_sent_tweets, fn_df_recent_stock_data):
+    N_DAYS_AGO=100
+    df_puts = pd.read_csv(fn_df_of_puts)
+    df_tweet_handles = pd.read_csv(fn_df_twitter_handles)
+    df_tweet_db = pd.read_csv(fn_df_of_sent_tweets, dtype=str)
+    df_tweet_db['tweet_date'] = pd.to_datetime(df_tweet_db['tweet_date'])
+
+    #Identify Tweetable 
+    df_all_twitter_stats = df_puts.merge(df_tweet_handles, how='inner',
+                                        left_on = ['nameOfIssuer', 'cusip'], right_on=['name','cusip'])
+    df_all_twitter_stats = df_all_twitter_stats.merge(df_tweet_db, how='left',
+                                        on = ['name','cusip','twitter'])
+    df_all_twitter_stats_g = df_all_twitter_stats.groupby(['nameOfIssuer','cusip','twitter'],as_index=False).agg({'tweet_date':'max'}).rename(columns={'tweet_date':'max_tweet_date'})
+    today = datetime.today() 
+    n_days_ago = today - timedelta(days=N_DAYS_AGO)
+    df_tweet_eligible = df_all_twitter_stats_g[~(df_all_twitter_stats_g.max_tweet_date > n_days_ago)].reset_index(drop=True)
+
+    #Explode out DF
+    df_puts['fund_name'] = df_puts['fund_name'].str.strip('[]').str.split(',')
+    df_puts_explode = df_puts.explode('fund_name')
+    df_puts_explode['fund_name'] = df_puts_explode['fund_name'].str.strip("'")
+
+    #Prepping Tweet Text
+    df_data_by_stocks = pd.read_csv(fn_df_recent_stock_data)
+    df_data_by_stocks_puts = df_data_by_stocks[df_data_by_stocks.putCall == 'Put']
+    df_final = df_tweet_eligible.merge(df_puts_explode, how = 'inner',
+            left_on = ['nameOfIssuer','cusip'],
+            right_on = ['nameOfIssuer','cusip']).merge(df_data_by_stocks_puts,
+            left_on = ['nameOfIssuer','cusip','fund_name'],
+            right_on = ['nameOfIssuer','cusip','fund_name']
+            ).drop_duplicates().reset_index(drop=True)
+    df_final.sort_values('value_x',ascending=False).head().iloc[1]
+    twitter_name = df_final.sort_values('value_x',ascending=False).head().iloc[0].twitter
+    company_name = df_final[df_final.twitter == twitter_name].nameOfIssuer
+    company_cusip = df_final[df_final.twitter == twitter_name].cusip
+    report_date = df_final[df_final.twitter == twitter_name].reportDate.max()
+    hf_link_dict = {}
+    for index, row in df_final[df_final.twitter == twitter_name].iterrows():
+        #print(row)
+        hf_link_dict[row.fund_name] = row.filingLink
+
+    tweet = '''Hey @{} Did you know that on {} the following hedge funds reported a short against you? Check these link(s): 
+
+    {}'''.format(twitter_name,report_date, hf_link_dict).replace("',","\n")
+    print('tweet to send: ', tweet)
+
+    #Backup Tweet
+    data_to_add = {
+        'name':company_name, 
+        'cusip':company_cusip, 
+        'twitter':twitter_name, 
+        'tweet_date':today, 
+        'tweet_text':tweet}
+    df_to_add = pd.DataFrame(data_to_add).drop_duplicates().reset_index(drop=True)
+    df_tweet_db =pd.concat([df_tweet_db, df_to_add]).drop_duplicates().reset_index(drop=True)
+    df_tweet_db.to_csv(fn_df_of_sent_tweets, index=False)
+
+    return tweet
+
     
