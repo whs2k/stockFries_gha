@@ -123,6 +123,8 @@ MORGAN STANLEY,"<a href=""http://www.google.com/search?q=stock price MORGAN STAN
         target=""_blank"">MORGAN STANLEY</a>",617446448,580201500,"['CAPITAL FUND MANAGEMENT', 'CITADEL ADVISORS LLC', 'CITADEL ADVISORS LLC', 'D. E. Shaw & Co., Inc']"
 ISHARES TR,"<a href=""http://www.google.com/search?q=stock price ISHARES TR"" 
         target=""_blank"">ISHARES TR</a>",464287234,574086212,['CITADEL ADVISORS LLC']
+SPDR SER TR,"<a href=""http://www.google.com/search?q=stock price SPDR SER TR"" 
+        target=""_blank"">SPDR SER TR</a>",78464A698,573121521,"['CAPITAL FUND MANAGEMENT', 'CITADEL ADVISORS LLC', 'CITADEL ADVISORS LLC', 'MKP Capital Management, L.L.C.']"
 JOHNSON & JOHNSON,"<a href=""http://www.google.com/search?q=stock price JOHNSON & JOHNSON"" 
         target=""_blank"">JOHNSON & JOHNSON</a>",478160104,572759308,"['CAPITAL FUND MANAGEMENT', 'CITADEL ADVISORS LLC', 'CITADEL ADVISORS LLC', 'D. E. Shaw & Co., Inc']"
 ISHARES TR,"<a href=""http://www.google.com/search?q=stock price ISHARES TR"" 
@@ -185,8 +187,6 @@ MICRON TECHNOLOGY INC,"<a href=""http://www.google.com/search?q=stock price MICR
         target=""_blank"">MICRON TECHNOLOGY INC</a>",595112103,400133658,"['CAPITAL FUND MANAGEMENT', 'CITADEL ADVISORS LLC', 'CITADEL ADVISORS LLC', 'D. E. Shaw & Co., Inc']"
 SCHWAB CHARLES CORP,"<a href=""http://www.google.com/search?q=stock price SCHWAB CHARLES CORP"" 
         target=""_blank"">SCHWAB CHARLES CORP</a>",808513105,399019360,"['CAPITAL FUND MANAGEMENT', 'CITADEL ADVISORS LLC', 'D. E. Shaw & Co., Inc', 'III Capital Management ']"
-SPDR SER TR,"<a href=""http://www.google.com/search?q=stock price SPDR SER TR"" 
-        target=""_blank"">SPDR SER TR</a>",78464A698,397141521,"['CAPITAL FUND MANAGEMENT', 'CITADEL ADVISORS LLC', 'CITADEL ADVISORS LLC']"
 AMGEN INC,"<a href=""http://www.google.com/search?q=stock price AMGEN INC"" 
         target=""_blank"">AMGEN INC</a>",031162100,395768282,"['CAPITAL FUND MANAGEMENT', 'CITADEL ADVISORS LLC', 'CITADEL ADVISORS LLC', 'D. E. Shaw & Co., Inc']"
 MICROSTRATEGY INC,"<a href=""http://www.google.com/search?q=stock price MICROSTRATEGY INC"" 
@@ -299,14 +299,14 @@ CAPITAL ONE FINL CORP,"<a href=""http://www.google.com/search?q=stock price CAPI
         target=""_blank"">CAPITAL ONE FINL CORP</a>",14040H105,244932160,"['CAPITAL FUND MANAGEMENT', 'CITADEL ADVISORS LLC', 'D. E. Shaw & Co., Inc', 'SOROS FUND MANAGEMENT LLC']"
 PROCTER AND GAMBLE CO,"<a href=""http://www.google.com/search?q=stock price PROCTER AND GAMBLE CO"" 
         target=""_blank"">PROCTER AND GAMBLE CO</a>",742718109,240706604,"['CAPITAL FUND MANAGEMENT', 'CITADEL ADVISORS LLC', 'CITADEL ADVISORS LLC', 'D. E. Shaw & Co., Inc']"
+ISHARES TR,"<a href=""http://www.google.com/search?q=stock price ISHARES TR"" 
+        target=""_blank"">ISHARES TR</a>",464287184,238923469,"['CITADEL ADVISORS LLC', 'MKP Capital Management, L.L.C.']"
 DRAFTKINGS INC NEW,"<a href=""http://www.google.com/search?q=stock price DRAFTKINGS INC NEW"" 
         target=""_blank"">DRAFTKINGS INC NEW</a>",26142V105,237366027,"['CAPITAL FUND MANAGEMENT', 'CITADEL ADVISORS LLC', 'CITADEL ADVISORS LLC', 'D. E. Shaw & Co., Inc']"
 SOUTHWEST AIRLS CO,"<a href=""http://www.google.com/search?q=stock price SOUTHWEST AIRLS CO"" 
         target=""_blank"">SOUTHWEST AIRLS CO</a>",844741108,237067256,"['CAPITAL FUND MANAGEMENT', 'CITADEL ADVISORS LLC', 'CITADEL ADVISORS LLC', 'D. E. Shaw & Co., Inc', 'TWO SIGMA INVESTMENTS, LP']"
 ISHARES TR,"<a href=""http://www.google.com/search?q=stock price ISHARES TR"" 
         target=""_blank"">ISHARES TR</a>",464287440,234632538,['CITADEL ADVISORS LLC']
-ISHARES TR,"<a href=""http://www.google.com/search?q=stock price ISHARES TR"" 
-        target=""_blank"">ISHARES TR</a>",464287184,232905969,['CITADEL ADVISORS LLC']
 UNITY SOFTWARE INC,"<a href=""http://www.google.com/search?q=stock price UNITY SOFTWARE INC"" 
         target=""_blank"">UNITY SOFTWARE INC</a>",91332U101,229107120,"['CAPITAL FUND MANAGEMENT', 'CITADEL ADVISORS LLC', 'CITADEL ADVISORS LLC', 'D. E. Shaw & Co., Inc']"
 ALCOA CORP,"<a href=""http://www.google.com/search?q=stock price ALCOA CORP"" 
@@ -1611,6 +1611,8 @@ CHART INDS INC,"<a href=""http://www.google.com/search?q=stock price CHART INDS 
         target=""_blank"">CHART INDS INC</a>",16115Q308,11819811,"['CITADEL ADVISORS LLC', 'CITADEL ADVISORS LLC', 'D. E. Shaw & Co., Inc']"
 PROSHARES TR,"<a href=""http://www.google.com/search?q=stock price PROSHARES TR"" 
         target=""_blank"">PROSHARES TR</a>",74347G432,11816363,['CITADEL ADVISORS LLC']
+APOLLO COML REAL EST FIN INC,"<a href=""http://www.google.com/search?q=stock price APOLLO COML REAL EST FIN INC"" 
+        target=""_blank"">APOLLO COML REAL EST FIN INC</a>",03762U105,11809810,"['CITADEL ADVISORS LLC', 'MKP Capital Management, L.L.C.', 'MKP Capital Management, L.L.C.']"
 VENTAS INC,"<a href=""http://www.google.com/search?q=stock price VENTAS INC"" 
         target=""_blank"">VENTAS INC</a>",92276F100,11787160,"['CAPITAL FUND MANAGEMENT', 'CITADEL ADVISORS LLC']"
 OMNICOM GROUP INC,"<a href=""http://www.google.com/search?q=stock price OMNICOM GROUP INC"" 
@@ -1641,6 +1643,8 @@ MURPHY USA INC,"<a href=""http://www.google.com/search?q=stock price MURPHY USA 
         target=""_blank"">MURPHY USA INC</a>",626755102,11374264,"['CITADEL ADVISORS LLC', 'CITADEL ADVISORS LLC']"
 LAMAR ADVERTISING CO NEW,"<a href=""http://www.google.com/search?q=stock price LAMAR ADVERTISING CO NEW"" 
         target=""_blank"">LAMAR ADVERTISING CO NEW</a>",512816109,11371960,['CITADEL ADVISORS LLC']
+LADDER CAP CORP,"<a href=""http://www.google.com/search?q=stock price LADDER CAP CORP"" 
+        target=""_blank"">LADDER CAP CORP</a>",505743104,11371795,"['CITADEL ADVISORS LLC', 'MKP Capital Management, L.L.C.', 'MKP Capital Management, L.L.C.']"
 PROSHARES TR II,"<a href=""http://www.google.com/search?q=stock price PROSHARES TR II"" 
         target=""_blank"">PROSHARES TR II</a>",74347Y813,11357098,['CITADEL ADVISORS LLC']
 ORGANON & CO,"<a href=""http://www.google.com/search?q=stock price ORGANON & CO"" 
@@ -2013,8 +2017,6 @@ MERITAGE HOMES CORP,"<a href=""http://www.google.com/search?q=stock price MERITA
         target=""_blank"">MERITAGE HOMES CORP</a>",59001A102,6271200,['CITADEL ADVISORS LLC']
 KORNIT DIGITAL LTD,"<a href=""http://www.google.com/search?q=stock price KORNIT DIGITAL LTD"" 
         target=""_blank"">KORNIT DIGITAL LTD</a>",M6372Q113,6240412,['CITADEL ADVISORS LLC']
-APOLLO COML REAL EST FIN INC,"<a href=""http://www.google.com/search?q=stock price APOLLO COML REAL EST FIN INC"" 
-        target=""_blank"">APOLLO COML REAL EST FIN INC</a>",03762U105,6239810,"['CITADEL ADVISORS LLC', 'MKP Capital Management, L.L.C.']"
 REDFIN CORP,"<a href=""http://www.google.com/search?q=stock price REDFIN CORP"" 
         target=""_blank"">REDFIN CORP</a>",75737F108,6226056,"['CITADEL ADVISORS LLC', 'D. E. Shaw & Co., Inc']"
 SOUTHWESTERN ENERGY CO,"<a href=""http://www.google.com/search?q=stock price SOUTHWESTERN ENERGY CO"" 
@@ -2067,8 +2069,6 @@ FUBOTV INC,"<a href=""http://www.google.com/search?q=stock price FUBOTV INC""
         target=""_blank"">FUBOTV INC</a>",35953D104,5821944,"['CITADEL ADVISORS LLC', 'D. E. Shaw & Co., Inc']"
 AMERIPRISE FINL INC,"<a href=""http://www.google.com/search?q=stock price AMERIPRISE FINL INC"" 
         target=""_blank"">AMERIPRISE FINL INC</a>",03076C106,5811399,['CITADEL ADVISORS LLC']
-LADDER CAP CORP,"<a href=""http://www.google.com/search?q=stock price LADDER CAP CORP"" 
-        target=""_blank"">LADDER CAP CORP</a>",505743104,5806795,"['CITADEL ADVISORS LLC', 'MKP Capital Management, L.L.C.']"
 ICAHN ENTERPRISES LP,"<a href=""http://www.google.com/search?q=stock price ICAHN ENTERPRISES LP"" 
         target=""_blank"">ICAHN ENTERPRISES LP</a>",451100101,5803344,['CITADEL ADVISORS LLC']
 HEICO CORP NEW,"<a href=""http://www.google.com/search?q=stock price HEICO CORP NEW"" 
