@@ -122,8 +122,8 @@ def process_scraped_data(df_all_):
         .reset_index(drop=True)
     df_puts_current_g = df_puts_current.groupby(['nameOfIssuer','nameOfIssuer_link','cusip']) \
         .agg({'value':'sum','fund_name':lambda x: list(x)}).sort_values('value', ascending=False)
-    df_current_g = df_current.groupby(['nameOfIssuer','nameOfIssuer_link','cusip']).sum().sort_values('value', ascending=False)
-    df_previous_g = df_previous.groupby(['nameOfIssuer','nameOfIssuer_link','cusip']).sum().sort_values('value', ascending=False)
+    df_current_g = df_current.groupby(['nameOfIssuer','nameOfIssuer_link','cusip'])[['value']].sum().sort_values('value', ascending=False)
+    df_previous_g = df_previous.groupby(['nameOfIssuer','nameOfIssuer_link','cusip'])[['value']].sum().sort_values('value', ascending=False)
     df_diff = df_current_g - df_previous_g
     df_heavy_ = df_current_g
     df_hot_ = df_diff[df_diff.value > 0]
