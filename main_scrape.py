@@ -100,6 +100,8 @@ def main():
 	    about_body_string = file.read().replace('\n', '')
 	with open('body_shorts.html', 'r') as file:
 		puts_body_string = file.read().replace('\n', '')
+	with open('blog_body.html', 'r') as file:
+		blog_body_string = file.read().replace('\n', '')
 	
 	print('now: ', str(datetime.datetime.now()))
 	header = header.replace('most_recent_filing_date_html',most_recent_filing_date)#.format(most_recent_filing_date_html=most_recent_filing_date)#,'{}')#str(df_all.reportDate.max()))
@@ -113,6 +115,7 @@ def main():
 	final = header +body+ footer 
 	final_about = header+about_body+footer
 	final_puts_string = header+puts_body+footer
+	final_blog_string = header+blog_body_string+footer
 
 	with open('index.html', 'w') as file:
 	    file.write(final)
@@ -120,6 +123,8 @@ def main():
 	    file.write(final_about)
 	with open('puts.html', 'w') as file:
 		file.write(final_puts_string)
+	with open('blog.html', 'w') as file:
+		file.write(final_blog_string)
 	
 if __name__ == "__main__":
 	main()
