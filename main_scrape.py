@@ -105,8 +105,21 @@ def main():
 	
 	print('now: ', str(datetime.datetime.now()))
 	header = header.replace('most_recent_filing_date_html',most_recent_filing_date)#.format(most_recent_filing_date_html=most_recent_filing_date)#,'{}')#str(df_all.reportDate.max()))
-	footer = footer.format(most_recent_scrape_date=(str(datetime.datetime.now())))
-	about_body = about_body_string.format(funds_list=fund_dict).replace("',","',\n")
+	funds_items = []
+	for name, url in fund_dict.items():
+		cik = url.split('CIK=')[1].split('&')[0] if 'CIK=' in url else ''
+		cik_badge = f'<span class="badge badge-light text-muted border mr-2">CIK: {cik}</span>' if cik else ''
+		item_html = (
+			f'<a href="{url}" target="_blank" rel="noopener noreferrer" '
+			f'class="list-group-item list-group-item-action d-flex justify-content-between align-items-center py-2 px-3">'
+			f'<div><strong class="text-dark">{name}</strong></div>'
+			f'<div>{cik_badge}<span class="btn btn-outline-primary btn-sm py-1 px-2" style="font-size: 0.75rem;">'
+			f'SEC Filings <i class="fa fa-external-link ml-1"></i></span></div>'
+			f'</a>'
+		)
+		funds_items.append(item_html)
+	funds_list_html = "\n".join(funds_items)
+	about_body = about_body_string.format(funds_list=funds_list_html)
 	body = body_string %(table_html_heavy, table_html_hot, table_html_cold)
 	puts_body = puts_body_string %(table_html_puts)
 

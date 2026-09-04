@@ -2,27 +2,29 @@
 <br>
 <div class="row mx-auto">
     <div class="col-md-10 mx-auto">
-        <div class="card">
+        <div class="card shadow-sm">
           <div class="card-body">
               <h1 class="card-title" style="font-size: 1.75rem;">Where are we collecting our data from?</h1>
-                <p class="card-text">Hedge Funds can do pretty much whatever they want. Other than (1) having more than $100M in assets and (2) all investing parties a networth of $1M plus, filing a 13F every quarter is the only requirement. We pull from the <a href='https://www.sec.gov/edgar/searchedgar/companysearch.html'> SEC&apos;s EDGAR database;</a> connecting you with the ideas of world’s most expensive entities</p>
-<br>
-              <h4>Hedge Funds List </h4>
-                <br>
-                <div class="overflow-auto" style="max-height: 350px">
-                  <ol>
+              <p class="card-text">Hedge Funds managing over $100M in assets are required by the SEC to file Form 13F quarterly. We pull directly from the <a href='https://www.sec.gov/edgar/searchedgar/companysearch.html' target='_blank' rel='noopener noreferrer'>SEC&apos;s EDGAR database</a> to connect you with transparent, verified data from the world’s largest fund managers.</p>
+              <br>
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                  <h4 class="mb-0">Tracked Hedge Funds & SEC Filings</h4>
+                  <span class="badge badge-primary p-2">62 Active Funds</span>
+              </div>
+              <p class="text-muted small mb-3">Click on any fund below to inspect their official 13F filing history directly on SEC.gov to verify data authenticity.</p>
 
+              <div class="overflow-auto border rounded p-2" style="max-height: 420px; background-color: #fafafa;">
+                <div class="list-group list-group-flush">
                   {funds_list}
-
-                  </ol>
                 </div>
+              </div>
 
               <br>
               <br>
 
               <div class="col-md-12 text-center">
                 <h4>Get in touch with us</h4>
-                <div class="border"></div>
+                <div class="border my-2"></div>
                 <p class="mes-box">
                     <i class="fa fa-envelope" aria-hidden="true"></i>
                     stockfries@gmail.com
