@@ -22,7 +22,7 @@ def main():
 			print(traceback.format_exc())
 			continue
 
-	df_all.to_csv('data_by_stocks.csv',index=False)
+	df_all.to_csv('data_by_stocks.zip', index=False, compression=dict(method='zip', archive_name='data_by_stocks.csv'))
 	most_recent_filing_date = str(df_all.filingDate.max())
 	print('most recent filing date: ', most_recent_filing_date)
 
