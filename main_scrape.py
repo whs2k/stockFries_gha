@@ -22,9 +22,18 @@ def main():
 			print(traceback.format_exc())
 			continue
 
-	df_all.to_csv('data_by_stocks.zip', index=False, compression=dict(method='zip', archive_name='data_by_stocks.csv'))
 	most_recent_filing_date = str(df_all.filingDate.max())
 	print('most recent filing date: ', most_recent_filing_date)
+
+	try:
+		df_existing = pd.read_csv('data_by_stocks.zip')
+		df_all_combined = pd.concat([df_all, df_existing], ignore_index=True)
+		df_all_combined = df_all_combined.drop_duplicates(subset=['cik', 'reportDate', 'cusip', 'sshPrnamt', 'value']).reset_index(drop=True)
+	except Exception as e:
+		print('Note on loading existing data_by_stocks.zip:', e)
+		df_all_combined = df_all
+
+	df_all_combined.to_csv('data_by_stocks.zip', index=False, compression=dict(method='zip', archive_name='data_by_stocks.csv'))
 
 	df_heavy, df_hot, df_cold, df_puts = process_scraped_data(df_all)
 
@@ -103,8 +112,10 @@ def main():
 	with open('blog_body.html', 'r') as file:
 		blog_body_string = file.read().replace('\n', '')
 	
-	print('now: ', str(datetime.datetime.now()))
-	header = header.replace('most_recent_filing_date_html',most_recent_filing_date)#.format(most_recent_filing_date_html=most_recent_filing_date)#,'{}')#str(df_all.reportDate.max()))
+	today_date_str = datetime.date.today().strftime('%Y-%m-%d')
+	print('now: ', today_date_str)
+	header = header.replace('most_recent_filing_date_html', most_recent_filing_date)
+	footer = footer.replace('{most_recent_scrape_date}', today_date_str).replace('most_recent_scrape_date_html', today_date_str)
 	funds_items = []
 	for name, url in fund_dict.items():
 		cik = url.split('CIK=')[1].split('&')[0] if 'CIK=' in url else ''

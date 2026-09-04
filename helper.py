@@ -4,7 +4,10 @@ import xmltodict
 from datetime import datetime, timedelta
 from requests_oauthlib import OAuth1Session
 import json
-from pytwitter import Api
+try:
+    from pytwitter import Api
+except ImportError:
+    Api = None
 
 def create_holdings_df(cik_='1535392',fund_name_='Mangrove Partners'):
     #Pull Filing accessionNumbers
